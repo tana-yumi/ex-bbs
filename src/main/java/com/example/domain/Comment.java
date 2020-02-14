@@ -17,24 +17,24 @@ public class Comment {
 	 */
 	private String name;
 	/**
-	 * コメント内容
+	 * コンテント
 	 */
 	private String content;
 	/**
 	 * 記事ID
 	 */
-	private Integer artcleId;
+	private Integer articleId;
 	
 	public Comment() {
 		
 	}
 	
-	public Comment(Integer id, String name, String content, Integer artcleId) {
+	public Comment(Integer id, String name, String content, Integer articleId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.content = content;
-		this.artcleId = artcleId;
+		this.articleId = articleId;
 	}
 
 	public Integer getId() {
@@ -61,17 +61,17 @@ public class Comment {
 		this.content = content;
 	}
 
-	public Integer getArtcleId() {
-		return artcleId;
+	public Integer getarticleId() {
+		return articleId;
 	}
 
-	public void setArtcleId(Integer artcleId) {
-		this.artcleId = artcleId;
+	public void setArticleId(Integer articleId) {
+		this.articleId = articleId;
 	}
 
 	@Override
 	public String toString() {
-		return "CommentDomain [id=" + id + ", name=" + name + ", content=" + content + ", artcleId=" + artcleId + "]";
+		return "CommentDomain [id=" + id + ", name=" + name + ", content=" + content + ", articleId=" + articleId + "]";
 	}
 	
 	

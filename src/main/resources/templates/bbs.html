@@ -5,13 +5,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>掲示板アプリケーション</h1>
-<form th:action="" method="post">
-投稿者名：<input type="text" name="bbsname"><br>
-投稿内容:<textarea rows="2" cols="30" name="bbscomment"></textarea>
-<button>記事投稿</button>
+	<h1>掲示板アプリケーション</h1>
 
-</form>
+	<!-- <div th:each="article:${article.commentList}">
+		<span th:text="${comment.id}"></span> <span th:text="${comment.name}"></span>
+		<span th:text="${comment.content}"></span> <span
+			th:text="${comment.articleId}"></span>
+	</div> -->
+
+	<form th:action="@{/bbs/insertArticle}" method="post">
+		投稿者名：<input type="text" name="name"><br>
+		投稿内容:<textarea rows="2" cols="30" name="content"></textarea>
+		<button>記事投稿</button>
+		<hr>
+	</form>
+
+	<div th:each="article:${articleList}">
+		投稿ID:<span th:text="${article.id}"></span><br>
+		投稿者名:<span th:text="${article.name}"></span><br>
+		投稿内容:<span th:text="${article.content}"></span><br>
+		<form th:action="@{/bbs/deleteByArticle}" method="post">
+		<input type="hidden" name="articleId" th:value="${article.id}">
+		<button>記事削除</button>
+		</form>
+		<div th:each="comment:${article.commentList}"><br>
+			コメントID:<span th:text="${comment.id}"></span><br>
+			コメント者名：<span th:text="${comment.name}"></span><br>
+			コメント内容：<span th:text="${comment.content}"></span><br>
+		</div><br>
+		<form th:action="@{/bbs/insertComment}" method="post">
+			名前：<input type="text" name="name"><br>
+			コメント： <textarea rows="2" cols="30" name="content"></textarea><br>
+			<input type="hidden" name="articleId" th:value="${article.id}">
+			<!--  <input type="text" name="articleId" th:value="${article.id}">-->
+			<button>コメント投稿</button>
+			<hr>
+		</form>
+	</div>
+
 
 </body>
 </html>
